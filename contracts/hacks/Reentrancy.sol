@@ -15,11 +15,11 @@ contract ReEntrancyGuard {
 contract EtherStore is ReEntrancyGuard {
     mapping(address => uint) public balances;
 
-    function deposit() public payable noReentrant {
+    function deposit() public payable  {
         balances[msg.sender] += msg.value;
     }
 
-    function withdraw() public noReentrant {
+    function withdraw() public  {
         uint bal = balances[msg.sender];
         require(bal > 0);
 
